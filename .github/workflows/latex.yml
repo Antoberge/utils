@@ -18,10 +18,15 @@ jobs:
     - name: Compile LaTeX document
       uses: xu-cheng/latex-action@v2
       with:
-        root_file: Resume.tex  # Make sure this is the correct name of your main TeX file
+        root_file: Resume.tex
+
+    - name: Copy PDF to docs folder
+      run: |
+        mkdir -p docs
+        cp Resume.pdf docs/
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
         personal_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: .  # Set to root instead of 'docs'
+        publish_dir: docs
