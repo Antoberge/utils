@@ -20,7 +20,7 @@ jobs:
     - name: Copy PDF to docs folder
       run: |
         mkdir -p docs
-        cp main.pdf docs/
+        cp Resume.pdf docs/
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
