@@ -1,11 +1,11 @@
-name: Build LaTeX Document
+name: Build and Deploy LaTeX Document
 
 on:
   push:
     branches: [ main ]
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -15,10 +15,15 @@ jobs:
     - name: Compile LaTeX document
       uses: xu-cheng/latex-action@v2
       with:
-        root_file: Resume.tex  # Replace with your main .tex file
+        root_file: Resume.tex
 
-    - name: Upload PDF artifact
-      uses: actions/upload-artifact@v3
+    - name: Copy PDF to docs folder
+      run: |
+        mkdir -p docs
+        cp main.pdf docs/
+
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
       with:
-        name: PDF
-        path: Resume.pdf  # Replace with the name of your generated PDF
+        personal_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: docs
