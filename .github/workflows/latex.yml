@@ -3,7 +3,10 @@ name: Build and Deploy LaTeX Document
 on:
   push:
     branches: [ main ]
-
+    
+permissions:
+  contents: write
+  
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
