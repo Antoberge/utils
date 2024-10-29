@@ -2,7 +2,7 @@ name: Build LaTeX Document
 
 on:
   push:
-    branches: [ main ]  
+    branches: [ main ]
 
 jobs:
   build:
@@ -15,4 +15,10 @@ jobs:
     - name: Compile LaTeX document
       uses: xu-cheng/latex-action@v2
       with:
-        root_file: Resume.tex  
+        root_file: Resume.tex  # Replace with your main .tex file
+
+    - name: Upload PDF artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: PDF
+        path: Resume.pdf  # Replace with the name of your generated PDF
