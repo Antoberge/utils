@@ -18,7 +18,11 @@ jobs:
     - name: Compile LaTeX document
       uses: xu-cheng/latex-action@v2
       with:
-        root_file: Resume.tex
+        root_file: Resume.tex  # Ensure this matches your main .tex file
+
+    - name: Move PDF to Root Directory
+      run: |
+        cp Resume.pdf ./  # Copy Resume.pdf to the root directory for deployment
 
     - name: Create index.html
       run: |
@@ -28,4 +32,5 @@ jobs:
       uses: peaceiris/actions-gh-pages@v3
       with:
         personal_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: .  # Deploy from root directory
+        publish_dir: .  # Deploy from the root directory
+        keep_files: false  # This ensures a fresh deployment, clearing out old files
