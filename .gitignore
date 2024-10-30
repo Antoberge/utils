@@ -14,8 +14,6 @@ tenurepackage/
 *.fdb_latexmk
 *.synctex.gz
 
-# Ignore PDFs (if you don't want to include them in the repo)
-*.pdf
 
 # Ignore specific files
 Letter_Writers.tex
