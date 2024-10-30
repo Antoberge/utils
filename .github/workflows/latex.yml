@@ -20,10 +20,6 @@ jobs:
       with:
         root_file: Resume.tex  # Ensure this matches your main .tex file
 
-    - name: Move PDF to Root Directory
-      run: |
-        cp Resume.pdf ./  # Copy Resume.pdf to the root directory for deployment
-
     - name: Create index.html
       run: |
         echo "<html><body><h1>Welcome to the Utils Repository</h1><p>Download the generated PDF: <a href='Resume.pdf'>Resume.pdf</a></p></body></html>" > index.html
